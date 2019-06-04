@@ -7,7 +7,7 @@ then
 	dd of=$tmp status=none
 fi
 
-
+# hardcoded terminal
 termite --class stdvim -e "vim $tmp" 2> /dev/null
 cat $tmp
 rm -f $tmp
