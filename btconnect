@@ -1,0 +1,6 @@
+#!/bin/sh
+awkcmd='BEGIN { IGNORECASE = 1 } /^device.*'$@'/ { print $2 }'
+devmac=$(echo -e 'devices\n' | bluetoothctl | awk "$awkcmd")
+
+echo $devmac
+echo -e "connect $devmac" | bluetoothctl

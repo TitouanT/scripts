@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# soft
+# screen=$(xrandr -q | awk '/ connected/ {print $1}')
+# xrandr --output $screen --brightness $1
+
+# hardcoded path, ok for now
+path="/sys/class/backlight/intel_backlight"
+max=$(cat $path/max_brightness)
+in=$1
+if [ $in -gt 100 ]
+then
+	in=100
+elif [ $in -lt 0 ]
+then
+	in=0
+fi
+val=$((max*$in/100))
+echo $val > $path/brightness

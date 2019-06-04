@@ -1,0 +1,20 @@
+#!/bin/sh
+if [ "$2" = "" ]
+then
+	echo "usage: $0 regex directory"
+	exit
+fi
+
+if [ -f $2 ]
+then
+	echo "$2 already exists and is a file"
+	exit
+fi
+
+if [ ! -d $2 ]
+then
+	mkdir $2
+	echo "$2 have been created"
+fi
+
+ls $1 | stdvim | xargs -I {} mv {} $2

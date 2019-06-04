@@ -1,0 +1,13 @@
+#!/bin/sh
+tmp=$(mktemp /tmp/XXXXXXXXXX.stdvim)
+
+# if in a pipe, read input from stdin
+if ! tty > /dev/null
+then
+	dd of=$tmp status=none
+fi
+
+
+termite --class stdvim -e "vim $tmp" 2> /dev/null
+cat $tmp
+rm -f $tmp
