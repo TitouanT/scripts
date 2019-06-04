@@ -1,4 +1,5 @@
 #!/bin/sh
+# moves a user selected subset of the matched file of `regex` to the folder `directory`
 if [ "$2" = "" ]
 then
 	echo "usage: $0 regex directory"
