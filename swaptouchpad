@@ -1,8 +1,3 @@
 #!/bin/sh
-
-# ∀ (x, a, b) ∈ R³
-# f: x → (a + b) - x
-# f(a) = b
-# f(b) = a
-
-synclient TouchpadOff=$(synclient -l | awk '/TouchpadOff/ {print 1-$3}')
+tp=TouchpadOff
+synclient $tp=$(synclient | awk "/$tp/ {print !\$3}")
