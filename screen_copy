@@ -1,0 +1,8 @@
+#!/bin/sh
+other=$(screen_others | awk "/$1/" | head -1)
+if [ "$other" = "" ]
+then
+	echo no screen detected
+	exit
+fi
+xrandr --output $other --auto --same-as $(screen_primary)
