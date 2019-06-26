@@ -4,6 +4,10 @@
 # screen=$(xrandr -q | awk '/ connected/ {print $1}')
 # xrandr --output $screen --brightness $1
 
+# ┌───────────────┐
+# │ xbacklight !! │
+# └───────────────┘
+
 path="/sys/class/backlight/"
 path=$path$(ls $path | head -1)
 
